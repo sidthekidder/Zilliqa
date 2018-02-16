@@ -20,6 +20,8 @@
 #include <thread>
 
 #include <boost/multiprecision/cpp_int.hpp>
+#include <jsonrpccpp/server/connectors/httpserver.h>
+#include <jsonrpccpp/common/exception.h>
 
 #include "Node.h"
 #include "common/Serializable.h"
@@ -36,6 +38,7 @@
 #include "libData/AccountData/Transaction.h"
 #include "libMediator/Mediator.h"
 #include "libPOW/pow.h"
+#include "libServer/Server.h"
 #include "libUtils/DataConversion.h"
 #include "libUtils/DetachedFunction.h"
 #include "libUtils/Logger.h"
@@ -45,6 +48,7 @@
 
 using namespace std;
 using namespace boost::multiprecision;
+using namespace jsonrpc;
 
 Node::Node(Mediator & mediator) : m_mediator(mediator)
 {
@@ -70,6 +74,15 @@ void Node::StartSynchronization()
     m_synchronizer.FetchDSInfo(m_mediator.m_lookup);
     m_synchronizer.FetchLatestDSBlocks(m_mediator.m_lookup, 1);
     m_synchronizer.FetchLatestTxBlocks(m_mediator.m_lookup, 1);
+}
+#endif // IS_LOOKUP_NODE
+
+#ifdef IS_LOOKUP_NODE
+void Node::StartApiServer()
+{
+    HttpServer httpserver(4123);
+    ZServer s(httpserver);
+    s.StartListening();
 }
 #endif // IS_LOOKUP_NODE
 

@@ -331,6 +331,12 @@ public:
                    array<unsigned char, 32> rand1,
                    array<unsigned char, 32> rand2);
 #endif // IS_LOOKUP_NODE
+
+#ifdef IS_LOOKUP_NODE
+    // start json-rpc server
+    void StartApiServer();
+#endif // IS_LOOKUP_NODE
+
 };
 
 #endif // __NODE_H__

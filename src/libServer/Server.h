@@ -17,6 +17,8 @@
 
 #include <jsonrpccpp/server.h>
 
+using namespace jsonrpc;
+
 class AbstractZServer : public jsonrpc::AbstractServer<AbstractZServer>
 {
     public:
@@ -44,6 +46,8 @@ class AbstractZServer : public jsonrpc::AbstractServer<AbstractZServer>
             this->bindAndAddMethod(jsonrpc::Procedure("isNodeMining", jsonrpc::PARAMS_BY_POSITION, jsonrpc::JSON_BOOLEAN,  NULL), &AbstractZServer::isNodeMiningI);
             this->bindAndAddMethod(jsonrpc::Procedure("getHashrate", jsonrpc::PARAMS_BY_POSITION, jsonrpc::JSON_STRING,  NULL), &AbstractZServer::getHashrateI);
         }
+
+        virtual ~AbstractZServer() {};
 
         inline virtual void getClientVersionI(const Json::Value &request, Json::Value &response)
         {
@@ -165,27 +169,28 @@ class ZServer : public AbstractZServer
 {
     public:
         ZServer(AbstractServerConnector &connector);
+        virtual ~ZServer();
 
-        virtual string getClientVersion();
-        virtual string getNetworkId();
-        virtual string getProtocolVersion();
-        virtual string createTransaction(const Json::Value & _json);
-        virtual Json::Value getTransaction(const string & transactionHash);
-        virtual Json::Value getDsBlock(const string & blockHash);
-        virtual Json::Value getTxBlock(const string & blockHash);
+        virtual std::string getClientVersion();
+        virtual std::string getNetworkId();
+        virtual std::string getProtocolVersion();
+        virtual std::string createTransaction(const Json::Value & _json);
+        virtual Json::Value getTransaction(const std::string & transactionHash);
+        virtual Json::Value getDsBlock(const std::string & blockHash);
+        virtual Json::Value getTxBlock(const std::string & blockHash);
         virtual Json::Value getLatestDsBlock();
         virtual Json::Value getLatestTxBlock();
-        virtual Json::Value getBalance(const string & address);
-        virtual string getGasPrice();
-        virtual string getStorageAt(const string & address, const string & position);
-        virtual Json::Value getTransactionHistory(const string & address);
-        virtual string getBlockTransactionCount(const string & blockHash);
-        virtual string getCode(const string & address);
-        virtual string createMessage(const Json::Value& _json);
-        virtual string getGasEstimate(const Json::Value& _json);
-        virtual Json::Value getTransactionReceipt(const string & transactionHash);
+        virtual Json::Value getBalance(const std::string & address);
+        virtual std::string getGasPrice();
+        virtual std::string getStorageAt(const std::string & address, const std::string & position);
+        virtual Json::Value getTransactionHistory(const std::string & address);
+        virtual std::string getBlockTransactionCount(const std::string & blockHash);
+        virtual std::string getCode(const std::string & address);
+        virtual std::string createMessage(const Json::Value& _json);
+        virtual std::string getGasEstimate(const Json::Value& _json);
+        virtual Json::Value getTransactionReceipt(const std::string & transactionHash);
         virtual bool isNodeSyncing();
         virtual bool isNodeMining();
-        virtual string getHashrate();
+        virtual std::string getHashrate();
 };
 

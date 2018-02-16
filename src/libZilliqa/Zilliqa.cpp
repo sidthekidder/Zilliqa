@@ -66,6 +66,10 @@ Zilliqa::Zilliqa(const std::pair<PrivKey, PubKey> & key, const Peer & peer, bool
 #ifndef IS_LOOKUP_NODE
     m_n.StartSynchronization();
 #endif // IS_LOOKUP_NODE
+
+#ifdef IS_LOOKUP_NODE
+    m_n.StartApiServer();
+#endif
 }
 
 Zilliqa::~Zilliqa()

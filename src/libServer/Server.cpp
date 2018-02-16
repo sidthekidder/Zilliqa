@@ -29,9 +29,14 @@ using namespace std;
 using namespace boost::multiprecision;
 
 
-ZServer::ZServer(AbstractServerConnector &connector) : AbstractStubServer(connector)
+ZServer::ZServer(AbstractServerConnector &connector) : AbstractZServer(connector)
 {
 	// constructor
+}
+
+ZServer::~ZServer() 
+{
+	// destructor
 }
 
 string ZServer::getClientVersion()
