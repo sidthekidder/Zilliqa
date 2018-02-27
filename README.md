@@ -43,16 +43,31 @@ To compile and run the Zilliqa codebase, you will need the following dependencie
 * `LevelDB`
 * `CMake`
 * `build-essential`
+* `json-rpc-cpp`
 *  pkg-config 
 
 For a _Debian_-based system, you can use the following command to install the dependencies:  
 ```bash
-sudo apt-get install libboost-all-dev libssl-dev libleveldb-dev libjsoncpp-dev libsnappy-dev cmake build-essential pkg-config
+sudo apt-get install libboost-all-dev libssl-dev libleveldb-dev libjsoncpp-dev libsnappy-dev cmake libjsonrpccpp-dev build-essential pkg-config
+```
+
+For _Ubuntu_ versions less than 15.10, you must install libmicrohttpd and make libjson-rpc-cpp manually using the following steps:
+```bash
+sudo apt-get install curl libargtable2-dev libhiredis-dev
+wget -c http://ftp.gnu.org/gnu/libmicrohttpd/libmicrohttpd-0.9.59.tar.gz
+(tar zxf libmicrohttpd-0.9.59.tar.gz; cd libmicrohttpd-0.9.59; ./configure; make; sudo make install; cd ..; rm -fr libmicrohttpd-0.9.59)
+wget -O libjson-rpc-cpp-1.1.0.tar.gz https://github.com/cinemast/libjson-rpc-cpp/archive/v1.1.0.tar.gz
+(tar xzf libjson-rpc-cpp-1.1.0.tar.gz; cd libjson-rpc-cpp-1.1.0; cmake . && make; sudo make install; sudo ldconfig; cd ..; rm -fr libjson-rpc-cpp-1.1.0)
+```
+
+For higher _Ubuntu_ versions, you may install libjson-rpc-cpp directly:
+```bash
+sudo apt-get install libjsonrpccpp-dev
 ```
 
 For Mac OS X (experimental), you can use the following command to install the dependencies:  
 ```bash
-brew install pkg-config jsoncpp leveldb
+brew install pkg-config jsoncpp leveldb libjson-rpc-cpp
 ```
 
 # Running Zilliqa locally (using 10 shard nodes and DS node locally)  
