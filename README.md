@@ -44,7 +44,7 @@ To compile and run the Zilliqa codebase, you will need the following dependencie
 * `CMake`
 * `build-essential`
 * `json-rpc-cpp`
-*  pkg-config 
+* `pkg-config` 
 
 For a _Debian_-based system, you can use the following command to install the dependencies:  
 ```bash
