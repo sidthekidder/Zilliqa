@@ -60,9 +60,9 @@ wget -O libjson-rpc-cpp-1.1.0.tar.gz https://github.com/cinemast/libjson-rpc-cpp
 (tar xzf libjson-rpc-cpp-1.1.0.tar.gz; cd libjson-rpc-cpp-1.1.0; cmake . && make; sudo make install; sudo ldconfig; cd ..; rm -fr libjson-rpc-cpp-1.1.0)
 ```
 
-For higher _Ubuntu_ versions, you may install libjson-rpc-cpp directly:
+For higher _Ubuntu_ versions, you may install libjson-rpc-cpp and libmicrohttpd directly:
 ```bash
-sudo apt-get install libjsonrpccpp-dev
+sudo apt-get install libjsonrpccpp-dev libmicrohttpd-dev
 ```
 
 For Mac OS X (experimental), you can use the following command to install the dependencies:  
