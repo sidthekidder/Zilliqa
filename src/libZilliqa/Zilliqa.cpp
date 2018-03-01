@@ -54,7 +54,7 @@ void Zilliqa::LogSelfNodeInfo(const std::pair<PrivKey, PubKey> & key, const Peer
 
 Zilliqa::Zilliqa(const std::pair<PrivKey, PubKey> & key, const Peer & peer, bool loadConfig) :
         m_pm(key, peer, loadConfig), m_mediator(key, peer), m_ds(m_mediator), m_lookup(m_mediator), 
-        m_n(m_mediator), m_cu(key, peer)
+        m_n(m_mediator), m_cu(key, peer), m_server(m_mediator)
 {
     LOG_MARKER();
 
