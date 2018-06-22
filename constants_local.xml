@@ -24,7 +24,7 @@
 		<MAXSUBMITTXNPERNODE>10</MAXSUBMITTXNPERNODE>
         <N_PREFILLED_PER_ACCOUNT>10000</N_PREFILLED_PER_ACCOUNT>
         <NEW_NODE_POW_DELAY>5</NEW_NODE_POW_DELAY>
-        <SCILLA_PATH></SCILLA_PATH>
+        <SCILLA_PATH>/home/ubuntu/launch-test/Scilla/bin/</SCILLA_PATH>
         <SCILLA_FILES>scilla_files/</SCILLA_FILES>
         <INTERPRETER_NAME>scilla-runner</INTERPRETER_NAME>
         <INIT_JSON>init.json</INIT_JSON>
@@ -38,6 +38,9 @@
         <account>
             <wallet_address>027b3e103003e6f533a1253342dd03340b3f5061</wallet_address>
         </account>
+	<account>
+            <wallet_address>3ee4e201007a627adaa5563bb2b4ec955e2d158b</wallet_address>
+	</account>
     </accounts>
     <lookups>
         <peer>
